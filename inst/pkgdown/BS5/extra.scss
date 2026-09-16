@@ -1,0 +1,156 @@
+// guardedverse shared skin
+// -----------------------------------------------------------------------------
+// Appended to the bslib ruleset, so every Bootstrap/bslib variable is in scope.
+// Each package sets exactly one thing -- `primary` -- and the rest of the
+// identity (type, rhythm, furniture) is derived here so the three sites read as
+// one family while still being individually recognisable.
+
+$leak-accent: $primary !default;
+$leak-accent-ink: mix($leak-accent, #000000, 78%) !default; // darker: AA on white
+$leak-accent-wash: mix($leak-accent, #ffffff, 8%) !default;
+
+// --- Type -------------------------------------------------------------------
+
+h1, h2, h3, h4, .page-header h1 {
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+h1 { margin-bottom: 0.75rem; }
+
+h2 {
+  margin-top: 2.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid $border-color;
+}
+
+h3 { margin-top: 1.75rem; }
+
+p, li { line-height: 1.65; }
+
+.lead {
+  font-size: 1.12rem;
+  color: mix($body-color, $body-bg, 78%);
+}
+
+// --- Navbar -----------------------------------------------------------------
+
+.navbar {
+  border-bottom: 3px solid $leak-accent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-brand { font-weight: 600; }
+
+// The cross-link back to the hub: present on every site, deliberately quiet.
+.navbar .nav-link[href*="guardedverse"] {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  opacity: 0.85;
+
+  &:hover { opacity: 1; }
+}
+
+// --- Home page --------------------------------------------------------------
+
+.template-home {
+  h1 { font-size: 2.1rem; }
+
+  // Badge rows read as metadata, not as content.
+  .badges img { margin: 0 0.15rem 0.3rem 0; }
+}
+
+// --- Reference index --------------------------------------------------------
+
+.template-reference-index {
+  .section-desc {
+    color: mix($body-color, $body-bg, 70%);
+    margin-bottom: 0.9rem;
+  }
+
+  .ref-index th { border-bottom: 2px solid $border-color; }
+
+  .ref-index td { padding-top: 0.45rem; padding-bottom: 0.45rem; }
+}
+
+// --- Sidebar / TOC ----------------------------------------------------------
+
+#toc .nav-link {
+  padding: 0.15rem 0;
+  font-size: 0.9rem;
+}
+
+#toc .nav-link.active {
+  font-weight: 600;
+  color: $leak-accent-ink;
+}
+
+.sidebar .sidebar-section {
+  h2 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: none;
+    margin-top: 1.5rem;
+    color: mix($body-color, $body-bg, 65%);
+  }
+}
+
+// --- Code -------------------------------------------------------------------
+
+pre, .sourceCode {
+  border-radius: $border-radius;
+  font-size: 0.875rem;
+}
+
+div.sourceCode {
+  border: 1px solid $border-color;
+  background-color: $leak-accent-wash;
+}
+
+code a, a > code { color: $leak-accent-ink; }
+
+// --- Callouts used across the family ----------------------------------------
+// Consistent wording matters here: all three packages mitigate leakage risk and
+// none of them guarantee its absence, so the "scope" callout is shared furniture.
+
+.guardedverse-note {
+  border-left: 3px solid $leak-accent;
+  background-color: $leak-accent-wash;
+  padding: 0.85rem 1.1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 $border-radius $border-radius 0;
+
+  p:last-child { margin-bottom: 0; }
+}
+
+// --- Footer -----------------------------------------------------------------
+
+.pkgdown-footer,
+footer {
+  margin-top: 3rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $border-color;
+  font-size: 0.9rem;
+  color: mix($body-color, $body-bg, 65%);
+}
+
+// --- Dark mode --------------------------------------------------------------
+// pkgdown's light switch sets data-bs-theme on <html>; the accent-derived
+// colours above are tuned for a light background, so re-derive them here.
+
+[data-bs-theme="dark"] {
+  $leak-accent-dark: mix($leak-accent, #ffffff, 72%);
+
+  div.sourceCode { background-color: rgba(255, 255, 255, 0.03); }
+
+  code a, a > code { color: $leak-accent-dark; }
+
+  #toc .nav-link.active { color: $leak-accent-dark; }
+
+  .guardedverse-note {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-left-color: $leak-accent-dark;
+  }
+}

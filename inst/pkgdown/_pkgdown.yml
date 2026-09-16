@@ -1,0 +1,39 @@
+# Shared configuration for every guardedverse documentation site.
+#
+# Consumed via `template: package: leakdown` in splitGraph, bioLeak and fastml.
+# Precedence is: pkgdown defaults < this file < the package's own _pkgdown.yml.
+#
+# What lives here: typography, palette scaffolding, page furniture, footer and
+# author metadata -- the things that must not drift between the three sites.
+# What does NOT live here: each package's navbar and reference index, which are
+# genuinely package-specific and are declared locally.
+
+template:
+  bootstrap: 5
+  light-switch: true
+  bslib:
+    # Each package sets its own `primary` (its accent); everything downstream
+    # in extra.scss derives from it, so one variable re-skins a whole site.
+    primary: "#4C78A8"
+    base_font: {google: "Source Sans 3"}
+    heading_font: {google: "Source Serif 4"}
+    code_font: {google: "JetBrains Mono"}
+    font_scale: 1.0
+    bslib_spacer: "1rem"
+    border-radius: "0.375rem"
+    navbar-brand-font-size: "1.15rem"
+
+authors:
+  Selcuk Korkmaz:
+    href: https://selcukorkmaz.github.io/
+  footnote: "Trakya University, Türkiye"
+
+footer:
+  structure:
+    left: [package, developed_by]
+    right: [guardedverse, built_with]
+  components:
+    guardedverse: "Part of the [guardedverse](https://selcukorkmaz.github.io/guardedverse/)."
+
+development:
+  mode: auto

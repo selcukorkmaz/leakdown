@@ -1,0 +1,18 @@
+Package: leakdown
+Title: Shared pkgdown Theme for the guardedverse Packages
+Version: 0.1.0
+Authors@R: c(
+    person("Selcuk", "Korkmaz", role = c("aut", "cre"), email = "selcukorkmaz@gmail.com",
+           comment = c(ORCID = "0000-0003-4632-6850"))
+    )
+Description: Provides the shared 'pkgdown' template, palette, and page furniture
+    used by the guardedverse family of leakage-aware evaluation packages
+    ('splitGraph', 'bioLeak', and 'fastml'). It carries no user-facing functions;
+    it exists so that the package documentation sites share one visual identity
+    and one set of cross-links without duplicating configuration.
+License: MIT + file LICENSE
+URL: https://github.com/selcukorkmaz/leakdown
+BugReports: https://github.com/selcukorkmaz/leakdown/issues
+Encoding: UTF-8
+RoxygenNote: 7.3.3
+Config/Needs/website: pkgdown
